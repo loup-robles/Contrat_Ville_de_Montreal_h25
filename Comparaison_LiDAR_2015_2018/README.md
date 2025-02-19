@@ -4,7 +4,7 @@
 La classification des données LiDAR de 2015 et 2018 a été faite par 2 algorithmes différents, menant à des disparités dans les données.
 
 ## Objectif
-Comparer les données sur plusieurs tuiles pour identifier les différences.
+Comparer les données sur plusieurs tuiles pour identifier les différences dans la classification des nuages de points.
 
 ## Données
 - **LiDAR 2015** : disponible sur le portail des données ouvertes de la Ville de Montréal.
@@ -19,12 +19,12 @@ Comparer les données sur plusieurs tuiles pour identifier les différences.
 4. Comparer les statistiques entre 2015 et 2018 pour chaque tuiles
 
 ## Tuiles sélectionnées
-- 299-5042 (sud-ouest du Parc La Fontaine) (faite)
-- 297-5043 (ouest du parc Laurier) (faite)
-- 297-5040 (Mont-Royal) (faite)
-- 300-5046 (Parc Maisonneuve, stade olympique) (faite)
-- 292-5048 (Parc-nature de l'Île-de-la-Visitation) (faite)
-- 284-5040 (Parc-nature du Bois-de-Liesse) (faite)
+- 299-5042 (sud-ouest du Parc La Fontaine)
+- 297-5043 (ouest du parc Laurier)
+- 297-5040 (Mont-Royal)
+- 300-5046 (Parc Maisonneuve, stade olympique)
+- 292-5048 (Parc-nature de l'Île-de-la-Visitation)
+- 284-5040 (Parc-nature du Bois-de-Liesse)
 
 ## Comparaison
 
