@@ -26,6 +26,10 @@ Comparer les données sur plusieurs tuiles pour identifier les différences dans
 - 292-5048 (Parc-nature de l'Île-de-la-Visitation)
 - 284-5040 (Parc-nature du Bois-de-Liesse)
 
+
+![alt text](image.png)
+
+
 ## Comparaison
 
 ### 299-5042
@@ -75,3 +79,14 @@ Comparer les données sur plusieurs tuiles pour identifier les différences dans
 | Non classifié     | 6.5 M          | 7.5 M          | 38.27 %          | 23.53 %          | <mark>-14.74 %       |
 | Végétation haute  | 1.8 M          | 16.7 M         | 10.41 %          | 52.75 %          | <mark>+42.34 %       |
 | Bâtiments         | 1.1 M          | 1.4 M          | 6.31 %           | 4.47 %           | -1.84 %              |
+
+
+## Conclusion
+
+Il y a une baisse globale du pourcentage de données non classifiés entre 2015 et 2018 sauf pour une des tuiles observées. Cette tuile représente une partie du Mont-Royal.
+En contre partie, le nombre de points classifiés en "Végétation haute" augmente significativement entre les deux années avec une augmentation moyenne de 27% entre 2015 et 2018.
+
+### Pistes expliquant ces différences
+
+La forte différence de pourcentage de points classifiées en "Végétation haute" entre 2015 et 2018 peut s'expliquer par plusieurs facteurs. Le portail des données ouvertes de la Ville de Montréal reiseigne que le LiDAR 2015 a été mis à jour en novembre 2015. nous ne savons pas si cela signifie que la donnée a été produite ou traitée à cette période mais si c'est sa période de production, le manque de végétation expliquerait cette différences.
+Pour valider cette théorie il faudrait avoir la date exacte de production de données pour le LiDAR 2015 et 2018.
