@@ -31,5 +31,10 @@ Interogation sur ce point : Pour connecter le reseau 1D au 2D on utilise les jon
 - dessiner la downtsream boundary line
 - Pour les options de simulations: Comment créer un scénarios et l'utiliser pour les calculs? J'ai essayé d'en créer de nouveau mais il semblait utiliser toujours le même à chaque fois.
 
-- possible d'exporter les données ailleurs de PCSWMM?
-- 
+## Résumé des questions : 
+
+- Comment choisir la DS Boundary line ?
+- Comment choisir les points de jonctions à renommer pour connecter 1D au 2D ?
+- Comment créer un scénario et l'utiliser pour le calcul ?
+- Comment gérer les *storages* ? est-ce pertinent de créer un *storage* par regard d'égout ?
+- Possible d'exporter les données ailleurs de PCSWMM? Dans une base de données PostGIS ?
