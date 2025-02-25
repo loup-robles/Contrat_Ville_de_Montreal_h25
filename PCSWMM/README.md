@@ -38,3 +38,17 @@ Interogation sur ce point : Pour connecter le reseau 1D au 2D on utilise les jon
 - Comment créer un scénario et l'utiliser pour le calcul ?
 - Comment gérer les *storages* ? est-ce pertinent de créer un *storage* par regard d'égout ?
 - Possible d'exporter les données ailleurs de PCSWMM? Dans une base de données PostGIS ?
+
+
+Réponse :
+
+- reduire la résolution du projet ou reduire la zone 40m
+- decouper en réseau et automatiser (couper avec des tuiles logique selon le ruissellement)
+- evolué le volume de chaque cuvette pour calculer selon le volume de pluie cb ca prendrais de la remplir
+- Chaque storage simule la capatité du nombre de puisard d'une zone (si le puisard est plus bas il a une plus grosse capacité)
+- Une pluie 10 ans permettrait pas de remplir toutes les cuvettes
+- Pour limiter le temps de traitement : faire par batch
+
+À faire suite à la réunion :
+
+
