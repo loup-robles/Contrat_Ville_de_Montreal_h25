@@ -90,3 +90,20 @@ En contre partie, le nombre de points classifiés en "Végétation haute" augmen
 
 La forte différence de pourcentage de points classifiées en "Végétation haute" entre 2015 et 2018 peut s'expliquer par plusieurs facteurs. Le portail des données ouvertes de la Ville de Montréal reiseigne que le LiDAR 2015 a été mis à jour en novembre 2015. nous ne savons pas si cela signifie que la donnée a été produite ou traitée à cette période mais si c'est sa période de production, le manque de végétation expliquerait cette différences.
 Pour valider cette théorie il faudrait avoir la date exacte de production de données pour le LiDAR 2015 et 2018.
+
+## À faire pour le LiDAR
+La taille de l'échantillion choisi ne permet pas d'emmetre de conclusion sur les différences de classification entre 2015 et 2018.
+--> Trouver une solution pour faire ce résumer statistique pour toutes les tuiles.
+
+- Pour chaque tuile:
+  - Calculer les statistiques de 2015 et 2018
+  - Calculer le poucentage de points "non classifiés"
+  - Faire la différence de 2018 sur 2015
+  - Relever le numéro des tuiles dont ce pourcentage est supérieur à 30%
+ 
+  Recherches effectuées sur comment travailler avec des données LiDAR en Python :
+
+Travailler avec la librairie *laspy*
+  - https://laspy.readthedocs.io/en/latest/
+  - https://laspy.readthedocs.io/en/latest/installation.html
+--> Question posée à Rodolphe pour la méthodologie du code.
