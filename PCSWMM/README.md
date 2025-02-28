@@ -33,32 +33,44 @@ Interogation sur ce point : Pour connecter le reseau 1D au 2D on utilise les jon
 
 ## Résumé des questions : 
 
-- Comment choisir la DS Boundary line ?
-- Comment choisir les points de jonctions à renommer pour connecter 1D au 2D ?
-- Comment créer un scénario et l'utiliser pour le calcul ?
-- Comment gérer les *storages* ? est-ce pertinent de créer un *storage* par regard d'égout ?
-- Possible d'exporter les données ailleurs de PCSWMM? Dans une base de données PostGIS ?
+1. Comment choisir la DS Boundary line ?
+2. Comment choisir les points de jonctions à renommer pour connecter 1D au 2D ?
+3. Comment créer un scénario et l'utiliser pour le calcul ?
+4. Comment gérer les *storages* ? est-ce pertinent de créer un *storage* par regard d'égout ?
+5. Possible d'exporter les données ailleurs de PCSWMM? Dans une base de données PostGIS ?
 
 
-Réponse :
+## Réponse :
 
-- reduire la résolution du projet ou reduire la zone 40m
-- decouper en réseau et automatiser (couper avec des tuiles logique selon le ruissellement)
-- evolué le volume de chaque cuvette pour calculer selon le volume de pluie cb ca prendrais de la remplir
+- Reduire la résolution du projet ou reduire la zone (tester avec une résolion de 40m)
+- Decouper en réseau et automatiser (couper avec des tuiles logique selon le ruissellement)
+- Évaluer le volume de chaque cuvette pour calculer selon le volume de pluie cb ca prendrais de la remplir
 - Chaque storage simule la capatité du nombre de puisard d'une zone (si le puisard est plus bas il a une plus grosse capacité)
 - Une pluie 10 ans permettrait pas de remplir toutes les cuvettes
 - Pour limiter le temps de traitement : faire par batch
 
-À faire suite à la réunion :
+Certaines questions non posées demeuraient sans réponses (questions 1, 2 et 3). Contact avec le support PCSWMM pour avoir des réponses.
+Réponse de ellen@chiwater.com : 
 
-Pour le LIDAR :
-- Pour chaque tuile:
-  - calculer les statistiques
-  - trouver le pouventage de points non classifiés
-  - Faire la différence de 2018 sur 2015
-  - Relever le numéro des tuiles dont ce pourcentage est supérieur à 30%
+"Hi Loup,
 
-  Pour PCSWMM :
-  - Mettre en application les réponses du support PCSWMM
+ 
+
+I am one of the engineers and was forwarded your questions. We don’t generally offer technical support to users with the Educational Grant, but I’ll do my best to point you in the right direction! I’ve included your original questions below with responses in blue.
+
+The 1D-2D connection is done by renaming the labels of some junctions. In the tutorials, only a few junctions are renamed. How do you determine which junctions should be renamed? There are hundreds of junctions in the PCSWMM project I received. Should I rename all of them?
+The “Tag” of nodes is updated to “Connect2D” to represent the areas where there is a connection between the 1D system and the 2D system. I.e. where there are catchbasins, or where there are ditches/streams. Where there are catchbasins, you’ll use orifices to connect the 1D elements to the 2D mesh. Where there are no flow control devices, you’ll use direct connections. Please refer to the following article for more details: https://support.chiwater.com/77628/connect-1d-to-2d
+
+On what features is the downstream boundary line drawn?
+The downstream boundary line is wherever your mesh ends. It could be a river, a hillside, or some arbitrary boundary. It’s what allows flow to leave the mesh. In other words, the boundary of your model. If you don’t include it, the mesh boundary will act as a wall and water will back up. To quote the relevant article “The downstream layer is recommended when the flood waters reach the extent of the bounding layer and the user is not interested in the flooding downstream”: https://support.chiwater.com/77737/downstream-layer?p=TdlTdl&h=TdlTdl,1,2,3
+
+In the project I received, the scenarios are already built. However, when I try to add a new scenario, every time I start the simulation, I get the same results as if the software is still using the old scenario instead of the one I just created. How can I assign the new scenario and ensure that it’s used for the modeling?
+It’s difficult to say what’s happening here without seeing it, but I have a few notes. First, when you “duplicate” a scenario, you need to open the new scenario before proceeding – the same scenario will stay open otherwise. Secondly, 2D layers are background layers (shapefiles), which means if your scenarios are using the same 2D Nodes, 2D Cells, Downstream, Bounding, etc. layers, editing them for one scenario will edit them for all the others. You need to create different versions of these layers for different scenarios if you want to see a difference between scenarios. Third, if you want to compare the model difference between two scenarios (and ensure there is actually a difference), you can use the “Status” and “Details” panels with the comparison tools to see the differences: https://support.chiwater.com/79801/comparing-scenario-results
+
+ Lastly, is it possible to connect PCSWMM with a relational database, such as PostGIS, to push data into the software and retrieve results from the database?
+Automatic sync is not possible. We used to sync automatically with external sources, but this caused some users problems when external software edited the SWMM layers and it became unusable with the SWMM engine on which PCSWMM is built. Pushing and pulling to/from databases is possible using scripting, though: https://support.chiwater.com/175035/script-example-work-with-azure-database-for-postgresql . You can also use the import  and export  as you need: https://support.chiwater.com/77958/importing-data
+
+
+--> Mettre en application les pistes du support
 
 
