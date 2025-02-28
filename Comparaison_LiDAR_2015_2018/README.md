@@ -106,4 +106,15 @@ La taille de l'échantillion choisi ne permet pas d'emmetre de conclusion sur le
 Travailler avec la librairie *laspy*
   - https://laspy.readthedocs.io/en/latest/
   - https://laspy.readthedocs.io/en/latest/installation.html
+
+
 --> Question posée à Rodolphe pour la méthodologie du code.
+
+
+# Réponse de Rodolphe
+
+resulats2015 = [] #Faire une liste vide
+for t2015 in tuiles2015:
+	resultats2015.append(calculsStats(t2015))
+
+
