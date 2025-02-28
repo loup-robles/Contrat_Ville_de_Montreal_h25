@@ -51,4 +51,14 @@ Réponse :
 
 À faire suite à la réunion :
 
+Pour le LIDAR :
+- Pour chaque tuile:
+  - calculer les statistiques
+  - trouver le pouventage de points non classifiés
+  - Faire la différence de 2018 sur 2015
+  - Relever le numéro des tuiles dont ce pourcentage est supérieur à 30%
+
+  Pour PCSWMM :
+  - Mettre en application les réponses du support PCSWMM
+
 
