@@ -117,4 +117,18 @@ resulats2015 = [] #Faire une liste vide
 for t2015 in tuiles2015:
 	resultats2015.append(calculsStats(t2015))
 
+ ## Lundi 03 mars: 
+
+Reprise du Code pour le calcul automatique de la différence du pourcentage de point selon leur classification
+ ![image](https://github.com/user-attachments/assets/68b66866-8bb6-466e-96ed-108882314d6d)
+
+Pour calculer sur toutes les tuiles, j'ai pensé à créer un google drive pour ajouter toutes les tuiles lidar. Trop lourd
+--> télégarché Anaconda à la place pour travailler sur Jupyter.
+--> j'ai ajouté les 149 premiéere tuiles pour le moment (296 à 279, reprendre à 280).
+
+
+
+
+ Avancé du code :
+
 
