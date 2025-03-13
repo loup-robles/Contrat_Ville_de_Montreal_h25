@@ -130,13 +130,11 @@ Finalement, reprise du code sur Spyder. Création d'un code qui calcul le pource
 
 # 1er Prototype fonctionnel
 
-resultats2018 = []
-tuiles2018 = []
+	resultats2018 = []
+	tuiles2018 = []
 
-def pourcentage2018(dossier):
-    
+	def pourcentage2018(dossier):
 
-    
     for f in os.listdir(dossier):
         
         if f.endswith('.las'):
