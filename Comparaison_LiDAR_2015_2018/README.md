@@ -135,41 +135,41 @@ Finalement, reprise du code sur Spyder. Création d'un code qui calcul le pource
 
 	def pourcentage2018(dossier):
 
-    for f in os.listdir(dossier):
+    		for f in os.listdir(dossier):
         
-        if f.endswith('.las'):
+        		if f.endswith('.las'):
             
-            chemin_fichier = os.path.join(dossier, f)
+            			chemin_fichier = os.path.join(dossier, f)
             
             
-            with lp.open(chemin_fichier) as g:
+            		with lp.open(chemin_fichier) as g:
                 
-                t2018 = g.read()
+                		t2018 = g.read()
                
-                num_points = len(t2018)
+                		num_points = len(t2018)
                 
                 
-                num_points_classcode = len(t2018[t2018.classification == 5])
+                		num_points_classcode = len(t2018[t2018.classification == 5])
                
-                pourcentage_points_classecode = (num_points_classcode/num_points) *100
+                		pourcentage_points_classecode = (num_points_classcode/num_points) *100
                 
-                numero_tuile = f[:8]
+                		numero_tuile = f[:8]
                
-                resultats2018.append(pourcentage_points_classecode)
+                		resultats2018.append(pourcentage_points_classecode)
                 
-                tuiles2018.append(numero_tuile)
+                		tuiles2018.append(numero_tuile)
                 
                 
                 
-    return resultats2018, tuiles2018
+    	return resultats2018, tuiles2018
 
-dossier = r"D:\UNIVERSITE\UQAM\Projet\DISQUE_5_DANS_8\LIDAR\TEST"
-resultats =  pourcentage2018(dossier)
+	dossier = r"D:\UNIVERSITE\UQAM\Projet\DISQUE_5_DANS_8\LIDAR\TEST"
+	resultats =  pourcentage2018(dossier)
 
-for pourcentage_points_classecode in resultats2018:
-    print(f"{pourcentage_points_classecode}% de points non classifiés")
-for numero_tuile in tuiles2018:
-    print(f"Tuile {numero_tuile}")
+	for pourcentage_points_classecode in resultats2018:
+    		print(f"{pourcentage_points_classecode}% de points non classifiés")
+	for numero_tuile in tuiles2018:
+    		print(f"Tuile {numero_tuile}")
 
 ![image](https://github.com/user-attachments/assets/b9dde783-7bf5-4188-90fe-aa4898c9d4ce)
 
