@@ -117,7 +117,7 @@ resulats2015 = [] #Faire une liste vide
 for t2015 in tuiles2015:
 	resultats2015.append(calculsStats(t2015))
 
- ## Lundi 03 mars: 
+ ## Semaine du 03 mars: 
 
 Reprise du Code pour le calcul automatique de la différence du pourcentage de point selon leur classification
  ![image](https://github.com/user-attachments/assets/68b66866-8bb6-466e-96ed-108882314d6d)
@@ -126,6 +126,11 @@ Pour calculer sur toutes les tuiles, j'ai pensé à créer un google drive pour 
 --> télégarché Anaconda à la place pour travailler sur Jupyter.
 --> j'ai ajouté les 149 premiéere tuiles pour le moment (296 à 279, reprendre à 280).
 
+Finalement, reprise du code sur Spyder. Création d'un code qui calcul le pourcentage de point classifié en une classification "x" et intégration des résultats dans un DataFrame qui comprend une colonne renseignant le nom de la tuile calculé, et une colonne renseignant le résultat du calcule.
+
+![image](https://github.com/user-attachments/assets/b9dde783-7bf5-4188-90fe-aa4898c9d4ce)
+
+# Semaine du 10 mars :
 
 
 
