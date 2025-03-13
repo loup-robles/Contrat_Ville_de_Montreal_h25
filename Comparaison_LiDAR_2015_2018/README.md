@@ -128,6 +128,51 @@ Pour calculer sur toutes les tuiles, j'ai pensé à créer un google drive pour 
 
 Finalement, reprise du code sur Spyder. Création d'un code qui calcul le pourcentage de point classifié en une classification "x" et intégration des résultats dans un DataFrame qui comprend une colonne renseignant le nom de la tuile calculé, et une colonne renseignant le résultat du calcule.
 
+# 1er Prototype fonctionnel
+
+resultats2018 = []
+tuiles2018 = []
+
+def pourcentage2018(dossier):
+    
+
+    
+    for f in os.listdir(dossier):
+        
+        if f.endswith('.las'):
+            
+            chemin_fichier = os.path.join(dossier, f)
+            
+            
+            with lp.open(chemin_fichier) as g:
+                
+                t2018 = g.read()
+               
+                num_points = len(t2018)
+                
+                
+                num_points_classcode = len(t2018[t2018.classification == 5])
+               
+                pourcentage_points_classecode = (num_points_classcode/num_points) *100
+                
+                numero_tuile = f[:8]
+               
+                resultats2018.append(pourcentage_points_classecode)
+                
+                tuiles2018.append(numero_tuile)
+                
+                
+                
+    return resultats2018, tuiles2018
+
+dossier = r"D:\UNIVERSITE\UQAM\Projet\DISQUE_5_DANS_8\LIDAR\TEST"
+resultats =  pourcentage2018(dossier)
+
+for pourcentage_points_classecode in resultats2018:
+    print(f"{pourcentage_points_classecode}% de points non classifiés")
+for numero_tuile in tuiles2018:
+    print(f"Tuile {numero_tuile}")
+
 ![image](https://github.com/user-attachments/assets/b9dde783-7bf5-4188-90fe-aa4898c9d4ce)
 
 # Semaine du 10 mars :
