@@ -232,9 +232,9 @@ Avancé du code, Code terminé avec un code pour calculer les pourcentage des po
 	df_resultats_2018 =  pourcentage2018(dossier)
 
 
-un second pour les tuiles 2015 : 
+Un second pour les tuiles 2015 : 
 
-# Calcul du pourcentage de points classifié en "x" code de classe pour l'année 2015:
+	# Calcul du pourcentage de points classifié en "x" code de classe pour l'année 2015:
     
 	resultats2015 = [] # Liste vide contenant les réultats du calcule du pourcentage de points classifié selon "x" classecode
 
@@ -330,7 +330,10 @@ Il permet de relevé la signature des fichiers. un fichier.Las doit avoir une si
 
 Succès
 
-Le code suivant permet de transposer les résultats dans un csv. apres l'avoir ouvert sur Excel et réenregistré en csv il est ouvrable dans ArcGIS.
+Le code suivant permet de transposer les résultats dans un csv. apres l'avoir ouvert sur Excel et réenregistré en csv il est ouvrable dans ArcGIS où on peut visualiser les résultats.
+
+![image](https://github.com/user-attachments/assets/9f175a29-fffb-4374-b055-a16a2489d0a3)
+
 
 
 
