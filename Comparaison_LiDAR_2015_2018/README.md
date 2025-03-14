@@ -330,10 +330,11 @@ Il permet de relevé la signature des fichiers. un fichier.Las doit avoir une si
 
 Succès
 
-Le code suivant permet de transposer les résultats dans un csv. apres l'avoir ouvert sur Excel et réenregistré en csv il est ouvrable dans ArcGIS où on peut visualiser les résultats.
+Le code suivant permet de transposer les résultats dans un csv. apres l'avoir ouvert sur Excel et réenregistré en csv il est ouvrable dans ArcGIS. Une jointure avec le fichier shapefile des tuiles LiDAR 2015 permet de visualiser les résultats.
 
 ![image](https://github.com/user-attachments/assets/9f175a29-fffb-4374-b055-a16a2489d0a3)
 
+On voit que globalement, pour toutes les tuiles de la partie extreme est de l'ile, le pourcentage de points non_classifiés ont augmentées.
 
 
 
