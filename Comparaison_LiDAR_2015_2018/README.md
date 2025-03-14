@@ -175,8 +175,162 @@ Finalement, reprise du code sur Spyder. Création d'un code qui calcul le pource
 
 # Semaine du 10 mars :
 
+Avancé du code, Code terminé avec un code pour calculer les pourcentage des points classifiés en "x" code de classe pour les tuiles 2018 : 
 
 
- Avancé du code :
+	import lazrs
+	import pandas as pd
+	import laspy as lp
+	import os
+
+
+	# Calcul du pourcentage de points classifiés en "x" code de classe pour l'année 2018:
+    
+	resultats2018 = [] # Liste vide contenant les réultats du calcule du pourcentage de points classifié selon "x" classecode
+
+	tuiles2018 = [] # Liste vide contenant le nom de la tuile qui est calculé
+
+	def pourcentage2018(dossier): # Fonction qui calcule
+    
+    		for f in os.listdir(dossier):
+            
+        		if f.endswith('.las'): # S'assurer que seuls les fichier .las sont sélectionnés
+                
+            		chemin_fichier = os.path.join(dossier, f)
+                
+            			with lp.open(chemin_fichier) as g: # Ouvrir le 
+                    
+               			t2018 = g.read()
+                   
+                		num_points = len(t2018) # Nombre de points dans la tuile
+                
+                		if num_points > 0: # Filtre pour ne pas diviser par 0 mais scénario impossible ici.
+                    
+                    			num_points_classcode = len(t2018[t2018.classification == 1]) # Nombre de points classifié selon le code de classe choisi
+                   
+                    			pourcentage_points_classecode = (num_points_classcode/num_points) *100 # Calcule du pourcentage
+                    
+                		else:
+                    			pourcentage_points_classecode = 0.0
+                
+                		numero_tuile = f[:8] # Chercher le nom de la tuile (les 9 premiers caractères du fichier)
+                   
+                		resultats2018.append(pourcentage_points_classecode) # Ajouter le pourcentage à la liste resultats2018
+                    
+                		tuiles2018.append(numero_tuile) # Ajouter le nom de la tuile à la liste tuiles2018
+                
+    		df_resultats2018 = pd.DataFrame(
+        	{'Tuile2018': tuiles2018,
+         	'Pourcentage de points classifiés 2018 (Classe 1)': resultats2018
+    		}) # Mettre le résultat des deux listes dans un dataframe
+                    
+                    
+                    
+    		return df_resultats2018
+
+	dossier = r"D:\UNIVERSITE\UQAM\Projet\DISQUE_5_DANS_8\LIDAR_2018\LAS_classifiees\266-279"
+	df_resultats_2018 =  pourcentage2018(dossier)
+
+
+un second pour les tuiles 2015 : 
+
+# Calcul du pourcentage de points classifié en "x" code de classe pour l'année 2015:
+    
+	resultats2015 = [] # Liste vide contenant les réultats du calcule du pourcentage de points classifié selon "x" classecode
+
+	tuiles2015 = [] # Liste vide contenant le nom de la tuile qui est calculé
+
+	def pourcentage2015(dossier): # Fonction qui calcule
+    
+   		for f in os.listdir(dossier):
+            
+        		if f.endswith('.las'): # S'assurer que seuls les fichier .las sont sélectionnés
+                
+            			chemin_fichier = os.path.join(dossier, f)
+                
+            			with lp.open(chemin_fichier) as g: # Ouvrir le 
+                    
+                		t2015 = g.read()
+                   
+                		num_points = len(t2015) # Nombre de points dans la tuile
+                
+                		if num_points > 0: # Filtre pour ne pas diviser par 0 mais scénario impossible ici.
+                    
+                    			num_points_classcode = len(t2015[t2015.classification == 1]) # Nombre de points classifié selon le code de classe choisi
+                   
+                    			pourcentage_points_classecode = (num_points_classcode/num_points) *100 # Calcule du pourcentage
+                    
+                		else:
+                    			pourcentage_points_classecode = 0.0
+                
+                		numero_tuile = f[:8] # Chercher le nom de la tuile (les 9 premiers caractères du fichier)
+                   
+                		resultats2015.append(pourcentage_points_classecode) # Ajouter le pourcentage à la liste resultats2018
+                    
+                		tuiles2015.append(numero_tuile) # Ajouter le nom de la tuile à la liste tuiles2018
+                
+    		df_resultats2015 = pd.DataFrame(
+        	{'Tuile2015': tuiles2015,
+         	'Pourcentage de points classifiés 2015 (Classe 1)': resultats2015
+    		}) # Mettre le résultat des deux listes dans un dataframe
+                    
+                    
+                    
+    		return df_resultats2015
+
+	dossier = r"D:\UNIVERSITE\UQAM\Contrat\Comparaison_2015_2018\LiDAR_2015\LAS2015_classifiees_266-279"
+	df_resultats_2015 =  pourcentage2015(dossier)
+
+
+# 2ème échantillon de test.
+
+Pour tester ce code j'ai fais un test sur un échantillon de données réduit comprenant 5 tuiles de 2015 et de 2018. Pour ce test je n'ai pas pris les meme tuiles pour 2015 et 2018 car je n'avais pas pour intention de soustraire les résultat par la suite. L'objectif était simplement de tester le code, et voir si les résultats étaient concoordant (si le résultats du calcule d'une tuile était bien sur la même ligne que le nom de la tuile correspondante). Le résultat était concluant pour les deux jeux de données (2015 et 2018). j'obtient dans les deux cas un dataframe contenant 2 colonnes : le nom de la tuile et le calcule du pourcentage voulu).
+
+
+# 3ème échantillon de test
+
+Les codes pour le calcul des pourcentage étant fonctionnel, j'ai ajouté une section fusionnant les deux dataframe en un. De sorte à avoir toutes les données dans un seul dataframe et pouvoir créer une nouvelle colonne résultante de la soustraction entre les résultats de 2018 et 2015 :
+
+	# Fusion des 2 DataFrame et soustraction des résultats
+
+	df_comparaison = df_resultats_2018.merge(df_resultats_2015[["Tuile2015", "Pourcentage de points classifiés 2015 (Classe 1)" ]], left_on="Tuile2018", right_on="Tuile2015", how="left")
+	df_comparaison["Différence"] = df_comparaison["Pourcentage de points classifiés 2018 (Classe 1)"] - df_comparaison["Pourcentage de points classifiés 2015 (Classe 1)"]
+
+	print(df_comparaison)
+
+Apres quoi j'ai réalisé le premier test complet, sur un échantillon réduit : 
+
+
+| Tuile      | 2015     | 2018     |
+|------------|---------|---------|
+| 295-5029   | ✅       | ❌       |
+| 295-5030   | ✅       | ✅       |
+| 295-5031   | ✅       | ✅       |
+| 295-5032   | ✅       | ✅       |
+| 295-5033   | ✅       | ✅       |
+| 295-5034   | ❌       | ✅       |
+
+j'ai choisi délibérément de prendre des données non-concordante à 100% entre 2015 et 2018 pour voir comment le code allait réagir lors de la fusion des 2 dataframe.
+Résultat positif, le dataframe insert un "NaN" lorsqu'il ne peut pas effectuer la soustraction entre les résultats de 2018 et 2015. Aucun décalage dans les ligne du df.
+
+# 4ème échantillon
+
+Test de grande ampleur sur toutes les tuiles comprises entre 266-279. Succès pour 2015 mais pas pour 2018, un fichier semble etre corrompu. pour retrouver si le fichier est corrompu ou non, j'ai effectué le code suivant :
+
+	dossier = r"D:\UNIVERSITE\UQAM\Projet\DISQUE_5_DANS_8\LIDAR_2018\LAS_classifiees\266-279"
+
+	for f in os.listdir(dossier):
+    		if f.endswith('.las'):
+        	chemin_fichier = os.path.join(dossier, f)
+       		 with open(chemin_fichier, "rb") as fichier:
+            		signature = fichier.read(4)
+        	print(f"{f} → Signature : {signature}")
+
+Il permet de relevé la signature des fichiers. un fichier.Las doit avoir une signature = b'LASF'. Une tuile (279-5031) était corrompue. je l'ai retiré du dossier avant de relancer le code.
+
+Succès
+
+Le code suivant permet de transposer les résultats dans un csv. apres l'avoir ouvert sur Excel et réenregistré en csv il est ouvrable dans ArcGIS.
+
 
 
