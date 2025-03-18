@@ -1,30 +1,41 @@
 # Comparaison LiDAR 2015 et 2018
 
 ## Contexte
-La classification des données LiDAR de 2015 et 2018 a été faite par 2 algorithmes différents, menant à des disparités dans les données.
+La classification des données LiDAR de 2015 et 2018 a été réalisée à l'aide de deux algorithmes différents, entraînant des disparités dans les résultats.
 
 ## Objectif
-Comparer les données sur plusieurs tuiles pour identifier les différences dans la classification des nuages de points.
+Comparer les données de plusieurs tuiles afin d’identifier les différences dans la classification des nuages de points.
 
 ## Données
 - **LiDAR 2015** : disponible sur le portail des données ouvertes de la Ville de Montréal.
 - **LiDAR 2018** : données sur disque physique, transmises par la Ville de Montréal lors du contrat pour la mise à jour de la carte de vulnérabilité face aux pluies abondantes de l'été 2024.
 
 ## Méthodologie
-1. Télécharger une sélection de 5-6 tuiles LiDAR 2015 sur le portail des données ouvertes de la Ville de Montréal.
-2. Convertir les fichiers `.LAZ` en `.LAS` :
-    - Sur ArcGIS avec "Convertir des fichiers LAS", aucune compression, toutes les options LAS décochées, fichier LAS sans référence spatiale avec 32188 ou 2950 (4140 ne fonctionne pas).
+1. Sélection de 5 à 6 tuiles LiDAR 2015 sur le portail des données ouvertes de la Ville de Montréal.
+
+2. Conversion des fichiers **.LAZ** en **.LAS** :
+
+- Sur *ArcGIS*, utiliser l'outil **Convertir des fichiers LAS** avec les paramètres suivants :
+	-  Aucune compression
+	-  Toutes les options LAS décochées
+	-  Fichier LAS sans référence spatiale avec **EPSG : 32188** ou **EPSG : 2950** (4140 ne fonctionne pas).
+ 
 3. Calculer des statistiques sur chaque tuile.
-    - Sur ArcGIS avec "Statistiques d'un jeu de données LAS"
-4. Comparer les statistiques entre 2015 et 2018 pour chaque tuiles
+
+    - Sur ArcGIS avec **Statistiques d'un jeu de données LAS**
+
+5. Comparer les statistiques entre 2015 et 2018 pour chaque tuiles
+
+
+# 1er Échantillon de test 
 
 ## Tuiles sélectionnées
-- 299-5042 (sud-ouest du Parc La Fontaine)
-- 297-5043 (ouest du parc Laurier)
-- 297-5040 (Mont-Royal)
-- 300-5046 (Parc Maisonneuve, stade olympique)
-- 292-5048 (Parc-nature de l'Île-de-la-Visitation)
-- 284-5040 (Parc-nature du Bois-de-Liesse)
+- **299-5042** (sud-ouest du Parc La Fontaine)
+- **297-5043** (ouest du parc Laurier)
+- **297-5040** (Mont-Royal)
+- **300-5046** (Parc Maisonneuve, stade olympique)
+- **292-5048** (Parc-nature de l'Île-de-la-Visitation)
+- **284-5040** (Parc-nature du Bois-de-Liesse)
 
 
 ![alt text](image.png)
@@ -83,33 +94,38 @@ Comparer les données sur plusieurs tuiles pour identifier les différences dans
 
 ## Conclusion
 
-Il y a une baisse globale du pourcentage de données non classifiés entre 2015 et 2018 sauf pour une des tuiles observées. Cette tuile représente une partie du Mont-Royal.
-En contre partie, le nombre de points classifiés en "Végétation haute" augmente significativement entre les deux années avec une augmentation moyenne de 27% entre 2015 et 2018.
+Sur cet échantillon, on observe une baisse globale du pourcentage de données non classifiées entre 2015 et 2018, à l'exception d’une seule tuile. Cette dernière correspond à une partie du Mont-Royal.
+En revanche, le nombre de points classifiés en **"Végétation haute"** augmente significativement entre les deux années, avec une hausse moyenne de 27 % entre 2015 et 2018.
 
 ### Pistes expliquant ces différences
 
-La forte différence de pourcentage de points classifiées en "Végétation haute" entre 2015 et 2018 peut s'expliquer par plusieurs facteurs. Le portail des données ouvertes de la Ville de Montréal reiseigne que le LiDAR 2015 a été mis à jour en novembre 2015. nous ne savons pas si cela signifie que la donnée a été produite ou traitée à cette période mais si c'est sa période de production, le manque de végétation expliquerait cette différences.
-Pour valider cette théorie il faudrait avoir la date exacte de production de données pour le LiDAR 2015 et 2018.
+La forte augmentation du pourcentage de points classifiés en **"Végétation haute"** entre 2015 et 2018 peut s'expliquer par plusieurs facteurs. Le portail des données ouvertes de la Ville de Montréal indique que les données **LiDAR 2015** ont été mises à jour en **novembre 2015**. Cependant, il n’est pas précisé si cette mise à jour correspond à la date de production ou simplement à la date de traitement des données.
+
+Si la donnée a effectivement été acquise en novembre 2015, une période où la végétation est réduite, cela pourrait expliquer cette différence dans la classification.
+
+Pour valider cette hypothèse, il serait nécessaire d’obtenir les dates exactes de production des données LiDAR **2015** et **2018**.
+
 
 ## À faire pour le LiDAR
-La taille de l'échantillion choisi ne permet pas d'emmetre de conclusion sur les différences de classification entre 2015 et 2018.
---> Trouver une solution pour faire ce résumer statistique pour toutes les tuiles.
 
-- Pour chaque tuile:
-  - Calculer les statistiques de 2015 et 2018
-  - Calculer le poucentage de points "non classifiés"
+L’échantillon sélectionné étant trop restreint, il ne permet pas de tirer des conclusions définitives sur les différences de classification entre 2015 et 2018.
+
+➡ **Trouver une solution pour réaliser ce résumé statistique sur l’ensemble des tuiles.**
+
+Pour chaque tuile :
+  - Calculer les statistiques de **2015** et **2018**
+  - Calculer le poucentage de points **"non classifiés"**
   - Faire la différence de 2018 sur 2015
-  - Relever le numéro des tuiles dont ce pourcentage est supérieur à 30%
+  - Relever le numéro des tuiles dont ce pourcentage est supérieur à **30%**
  
-  Recherches effectuées sur comment travailler avec des données LiDAR en Python :
+## 📚 Recherches effectuées sur le traitement des données LiDAR en Python  
 
-Travailler avec la librairie *laspy*
-  - https://laspy.readthedocs.io/en/latest/
-  - https://laspy.readthedocs.io/en/latest/installation.html
+Utilisation de la bibliothèque **laspy** :  
+- 📌 [Documentation principale](https://laspy.readthedocs.io/en/latest/)  
+- 📌 [Guide d'installation](https://laspy.readthedocs.io/en/latest/installation.html)  
 
 
---> Question posée à Rodolphe pour la méthodologie du code.
-
+➡ Question posée à Rodolphe pour la méthodologie du code.
 
 ## Réponse de Rodolphe
 
@@ -117,18 +133,31 @@ Travailler avec la librairie *laspy*
 		for t2015 in tuiles2015:
 		resultats2015.append(calculsStats(t2015))
 
- ## Semaine du 03 mars: 
+# Semaine du 03 mars: 
 
+## Reprise du Code pour le Calcul Automatique des Différences de Classification  
+
+![image](https://github.com/user-attachments/assets/68b66866-8bb6-466e-96ed-108882314d6d)  
+
+### 🚀 Progrès et ajustements  
+
+Pour effectuer les calculs sur toutes les tuiles, j’ai envisagé de créer un Google Drive afin d’y stocker toutes les tuiles LiDAR. Les fichiers étant trop volumineux, cette solution s’est avérée inadaptée.  
+
+#### 🔧 Solution adoptée  
+✅ Installation d'**Anaconda** pour travailler sous **Jupyter Notebook**.  
+✅ Ajout des **149 premières tuiles** (de **296** à **279**).  
+⏳ **Prochaine étape** : Reprendre à **280** pour compléter l’ensemble des données.  
+
+#### 💻 Développement du Code  
+🔹 Finalement, le code a été repris et exécuté sous **Spyder**.  
+🔹 Création d’un script permettant de **calculer automatiquement le pourcentage de points classifiés** selon une classification donnée **"x"**.  
+🔹 Les résultats sont intégrés dans un **DataFrame**, comprenant :  
+   - Une **colonne indiquant le nom de la tuile** traitée.  
+   - Une **colonne contenant le résultat du calcul**.  
 Reprise du Code pour le calcul automatique de la différence du pourcentage de point selon leur classification
- ![image](https://github.com/user-attachments/assets/68b66866-8bb6-466e-96ed-108882314d6d)
 
-Pour calculer sur toutes les tuiles, j'ai pensé à créer un google drive pour ajouter toutes les tuiles lidar. Trop lourd
---> télégarché Anaconda à la place pour travailler sur Jupyter.
---> j'ai ajouté les 149 premiéere tuiles pour le moment (296 à 279, reprendre à 280).
 
-Finalement, reprise du code sur Spyder. Création d'un code qui calcul le pourcentage de point classifié en une classification "x" et intégration des résultats dans un DataFrame qui comprend une colonne renseignant le nom de la tuile calculé, et une colonne renseignant le résultat du calcule.
-
-# 1er Prototype fonctionnel
+### 1er Prototype fonctionnel
 
 	resultats2018 = []
 	tuiles2018 = []
@@ -174,8 +203,10 @@ Finalement, reprise du code sur Spyder. Création d'un code qui calcul le pource
 ![image](https://github.com/user-attachments/assets/b9dde783-7bf5-4188-90fe-aa4898c9d4ce)
 
 # Semaine du 10 mars :
+### 2ème prototype fonctionnel
 
-Avancé du code, Code terminé avec un code pour calculer les pourcentage des points classifiés en "x" code de classe pour les tuiles 2018 : 
+Avancé du code, Code terminé avec un code pour calculer les pourcentage des points classifiés en "x" code de classe pour les tuiles 2018 :
+
 
 
 	import lazrs
@@ -284,12 +315,34 @@ Un second pour les tuiles 2015 :
 
 # 2ème échantillon de test.
 
-Pour tester ce code j'ai fais un test sur un échantillon de données réduit comprenant 5 tuiles de 2015 et de 2018. Pour ce test je n'ai pas pris les meme tuiles pour 2015 et 2018 car je n'avais pas pour intention de soustraire les résultat par la suite. L'objectif était simplement de tester le code, et voir si les résultats étaient concoordant (si le résultats du calcule d'une tuile était bien sur la même ligne que le nom de la tuile correspondante). Le résultat était concluant pour les deux jeux de données (2015 et 2018). j'obtient dans les deux cas un dataframe contenant 2 colonnes : le nom de la tuile et le calcule du pourcentage voulu).
+## 🛠️ Test du Code sur un Échantillon Réduit  
+
+Pour tester ce code, j’ai effectué un test sur un **échantillon réduit** comprenant **5 tuiles** de 2015 et **5 tuiles** de 2018.  
+
+### 🎯 Objectif du Test  
+L’objectif était simplement de **vérifier le bon fonctionnement du code**, sans chercher à comparer directement les valeurs entre 2015 et 2018.  
+
+### ⚠️ Différences dans l’échantillon  
+🚨 **Les tuiles sélectionnées ne sont pas les mêmes pour 2015 et 2018**, car je n'avais pas prévu de soustraire les résultats entre les deux années.  
+🔍 Le test visait uniquement à s’assurer que les **résultats étaient cohérents** :  
+- **Le calcul du pourcentage était correct**.  
+- **Chaque tuile était bien associée à son résultat dans le DataFrame*
 
 
 # 3ème échantillon de test
 
-Les codes pour le calcul des pourcentage étant fonctionnel, j'ai ajouté une section fusionnant les deux dataframe en un. De sorte à avoir toutes les données dans un seul dataframe et pouvoir créer une nouvelle colonne résultante de la soustraction entre les résultats de 2018 et 2015 :
+## 🔄 Fusion des DataFrames pour l'Analyse des Différences  
+
+Les codes pour le calcul des pourcentages étant **fonctionnels**, j’ai ajouté une **section fusionnant les deux DataFrames** en un seul.  
+
+### 🎯 Objectif  
+L’objectif est de **regrouper toutes les données** dans un **unique DataFrame** afin de faciliter l’analyse des différences entre 2015 et 2018.  
+
+### 🔧 Méthode  
+
+**Fusion des DataFrames** avec la méthode **.merge**
+
+
 
 	# Fusion des 2 DataFrame et soustraction des résultats
 
@@ -297,6 +350,9 @@ Les codes pour le calcul des pourcentage étant fonctionnel, j'ai ajouté une se
 	df_comparaison["Différence"] = df_comparaison["Pourcentage de points classifiés 2018 (Classe 1)"] - df_comparaison["Pourcentage de points classifiés 2015 (Classe 1)"]
 
 	print(df_comparaison)
+ 
+
+### 🧪 Test de Fusion avec Données Non Concordantes  
 
 Apres quoi j'ai réalisé le premier test complet, sur un échantillon réduit : 
 
@@ -310,12 +366,31 @@ Apres quoi j'ai réalisé le premier test complet, sur un échantillon réduit :
 | 295-5033   | ✅       | ✅       |
 | 295-5034   | ❌       | ✅       |
 
-j'ai choisi délibérément de prendre des données non-concordante à 100% entre 2015 et 2018 pour voir comment le code allait réagir lors de la fusion des 2 dataframe.
-Résultat positif, le dataframe insert un "NaN" lorsqu'il ne peut pas effectuer la soustraction entre les résultats de 2018 et 2015. Aucun décalage dans les ligne du df.
+
+
+J’ai **délibérément choisi** des données **non parfaitement concordantes** entre **2015 et 2018** afin d’observer le comportement du code lors de la fusion des deux DataFrames.  
+
+### 🎯 Objectif  
+Tester la gestion des **valeurs manquantes** et vérifier si la fusion des DataFrames entraîne des erreurs ou un décalage des lignes.  
+
+### ✅ Résultats  
+- **Résultat positif** :  
+  - Lorsque le code ne peut pas effectuer la soustraction entre 2018 et 2015 (car une tuile est absente d’un des jeux de données), le **DataFrame insère un "NaN"**.  
+  - **Aucun décalage** observé dans les lignes du DataFrame.  
+
+🔍 **Conclusion** : Le code gère correctement les données non concordantes et maintient l’intégrité des résultats.  
+
 
 # 4ème échantillon
 
-Test de grande ampleur sur toutes les tuiles comprises entre 266-279. Succès pour 2015 mais pas pour 2018, un fichier semble etre corrompu. pour retrouver si le fichier est corrompu ou non, j'ai effectué le code suivant :
+## 📊 Test de Grande Ampleur sur le premier fichiers de tuiles (266-279)  
+
+### 🚀 Résultats du Test  
+- **Succès pour 2015** ✅  
+- **Échec pour 2018** ❌ : Un fichier semble être corrompu.  
+
+### 🔍 Détection du Fichier Corrompu  
+Pour identifier le fichier problématique, j’ai exécuté le code suivant :
 
 	dossier = r"D:\UNIVERSITE\UQAM\Projet\DISQUE_5_DANS_8\LIDAR_2018\LAS_classifiees\266-279"
 
@@ -326,42 +401,71 @@ Test de grande ampleur sur toutes les tuiles comprises entre 266-279. Succès po
             		signature = fichier.read(4)
         	print(f"{f} → Signature : {signature}")
 
-Il permet de relever la signature des fichiers. Un fichier.Las doit avoir une signature = b'LASF'. Une tuile (279-5031) était corrompue. je l'ai retiré du dossier avant de relancer le code.
+Le script permet de relever la **signature des fichiers**.  
+🔹 Un fichier `.LAS` doit avoir une **signature = `b'LASF'`**.  
+🔹 Une tuile **(279-5031)** était corrompue.  
+🚀 **Action** : Je l’ai retirée du dossier avant de relancer le code.  
 
-**Succès**
+✅ **Succès** : Le script fonctionne correctement après cette correction.  
 
-Le code suivant permet de transposer les résultats dans un csv. apres l'avoir ouvert sur Excel et réenregistré en csv il est ouvrable dans ArcGIS. Une jointure avec le fichier shapefile des tuiles LiDAR 2015 permet de visualiser les résultats.
+---
+
+## 📂 Export des Résultats et Visualisation  
+
+Le code suivant permet de **transposer les résultats dans un fichier CSV**.  
+📌 **Procédure** :  
+1. Ouverture du fichier dans **Excel**.  
+2. Réenregistrement au format **CSV**.  
+3. Import dans **ArcGIS**.
+4. **Jointure avec le fichier shapefile des tuiles LiDAR 2015** pour visualiser les résultats.  
 
 ![image](https://github.com/user-attachments/assets/9f175a29-fffb-4374-b055-a16a2489d0a3)
 
-On voit que globalement, pour toutes les tuiles de la partie extreme est de l'ile, le pourcentage de points non_classifiés ont augmentées.
+🔎 **Observation** :  
+➡️ **Augmentation du pourcentage de points non classifiés** pour **les tuiles de l’extrême est de l’île**.  
 
-# Semaine du 17 mars
+---
 
-## Roulage du script pour toutes les tuiles classifiées en "non-classifiée" pour 2015 et 2018.
+## 📅 Semaine du 17 mars  
 
-Une fois que toute l'île a été faite, on a 5 CSV par années (2015 et 2018). Ils sont ajoutés au projet Arcgis **Comparaison_LiDAR_Classe1**. j'ai fusionné tous les csv en 1 seul avant de faire une jointure entre ce fichier et la couche shapefile des tuiles LiDAR pour pouvoir visualiser le résultat. Avec la bonne symbologie on obtient le résultat suivant :
+### 📌 Analyse des données "non-classifiées" (2015 vs 2018)  
+
+🔹 Exécution du script pour **toutes les tuiles** classifiées en **"non-classifiées"** en 2015 et 2018.  
+🔹 Fusion des **5 CSV par année (2015 et 2018)** dans **ArcGIS** (`Comparaison_LiDAR_Classe1`).  
+🔹 **Jointure** entre le fichier fusionné et la couche **shapefile des tuiles LiDAR**.  
+
+### 📊 Résultats de l'analyse  
 
 ![image](https://github.com/user-attachments/assets/1ba3e2fd-4767-4def-af80-c4937dd12f0b)
 
-Les tuiles vertes foncées sont celles dont le pourcentage de points "non-classifiés" ont fortements diminué entre les données de 2015 et 2018. En revanche, les tuiles oranges et rouges sont les tuiles dont la différence de pourcantage de données "non-classifiées" emtre 2018 et 2015 est supérieure à 15% et 30%.
-Plus globalement, près de 60% des tuiles ont un pourcentage de données "non-classifiées" plus élevé en 2018 qu'en 2015.
+🔸 **Légende** :  
+✔️ **Vert foncé** → Forte diminution du pourcentage de points "non-classifiés" entre 2015 et 2018.  
+⚠️ **Orange / Rouge** → Augmentation de plus de **15% à 30%** du pourcentage de points "non-classifiés" entre 2018 et 2015.  
 
-## Roulage du script pour toutes les tuiles classifiées en "végétation haute" pour 2015 et 2018.
+📌 **Tendance générale** :  
+➡️ **60% des tuiles** ont un **taux plus élevé de points "non-classifiés" en 2018** qu'en 2015.  
 
-Le code Python utilisé est le même, seul le code de classe de classification change à la ligne correspondante:
+---
 
-	num_points_classcode = len(t2015[t2015.classification == 5]) # Nombre de points classifié selon le code de classe choisi
+### 🌿 Analyse des données "Végétation haute" (2015 vs 2018)  
 
-Même procédé une fois que le script s'est effectué on peut ajouter les csv dans ArcGIS, les fusionner et les joindre à la couche shapefile. Dans ce cas on obtient des résultats tres différents. Étonnament, pour une grande majorité de l'île, les données LiDAR classifiées en "végétation haute" ont augmenté d'au moins 10% 
+🔹 **Même script**, seule la classification change :  
+
+	num_points_classcode = len(t2015[t2015.classification == 5])  # Nombre de points classifiés selon le code choisi
+
+
+📌 **Procédure identique** :  
+1. Ouverture du fichier dans **Excel**.  
+2. Réenregistrement au format **CSV**.  
+3. Import dans **ArcGIS**.
+4. **Jointure avec le fichier shapefile des tuiles LiDAR 2015** pour visualiser les résultats.
 
 ![image](https://github.com/user-attachments/assets/ca46a135-a92c-4225-b6b6-ea6b7f46a9bd)
 
-## Résumé des résultats : 
+🔎**Observation étonnante** :
+➡️ Pour une grande majorité de l'île, le nombre de points classifiés en "végétation haute" a augmenté d’au moins 10% entre 2015 et 2018. Ce résultat vient contredire ceux obtenus lors de notre premier échantillon test.
 
-- **60% des tuiles** ont un pourcentage de données classifiées en **"non-classifiées" plus élevé en 2018** qu'en 2015.
-- **9.7% des tuiles** ont un pourcentage de données classifiées en **"végétation-haute"** en 2018 qu'en 2015.
+# 📌 Résumé des résultats
 
-
-
-
+- **60% des tuiles** ont un pourcentage plus élevé de points **"non-classifiés" en 2018** qu'en 2015.
+- **9.7% des tuiles** montrent une augmentation du pourcentage de points classifiés en **"végétation haute" en 2018** par rapport à 2015.
