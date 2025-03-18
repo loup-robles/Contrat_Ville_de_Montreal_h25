@@ -40,7 +40,7 @@ Comparer les données sur plusieurs tuiles pour identifier les différences dans
 | Végétation haute  | 2.3 M          | 12.6 M         | 12.34 %          | 43.2 %           | <mark>+30.86 %       |
 | Bâtiments         | 5.4 M          | 6.8 M          | 29.28 %          | 22.27 %          | -7.01 %              |
 
-### 299-5043
+### 297-5043
 | Classification     | Nb points 2015 | Nb points 2018 | Pourcentage 2015 | Pourcentage 2018 | Différence 2018-2015 |
 |-------------------|----------------|----------------|------------------|------------------|----------------------|
 | Tous              | 21.1 M         | 24.2 M         | 100 %            | 100 %            | x                    |
@@ -48,10 +48,10 @@ Comparer les données sur plusieurs tuiles pour identifier les différences dans
 | Végétation haute  | 1.3 M          | 6.0 M          | 5.92 %           | 24.71 %          | <mark> +18.79 %      |
 | Bâtiments         | 5.7 M          | 6.3 M          | 27.07 %          | 25.92 %          | -1.15 %              |
 
-### 299-5040
+### 297-5040
 | Classification     | Nb points 2015 | Nb points 2018 | Pourcentage 2015 | Pourcentage 2018 | Différence 2018-2015 |
 |-------------------|----------------|----------------|------------------|------------------|----------------------|
-| Tous              | 16.8 M         | 26.0 M         | 100 %            | 100 %            | x                    |
+| Tous              | 29.2 M         | 26.0 M         | 100 %            | 100 %            | x                    |
 | Non classifié     | 1.4 M          | 8.2 M          | 8.47 %           | 31.57 %          | <mark>+23.1 %        |
 | Végétation haute  | 1.9 M          | 8.9 M          | 11.51 %          | 34.46 %          | <mark>+22.95 %       |
 | Bâtiments         | 2.9 M          | 3.9 M          | 17.8 %           | 14.88 %          | -2.92 %              |
@@ -111,11 +111,11 @@ Travailler avec la librairie *laspy*
 --> Question posée à Rodolphe pour la méthodologie du code.
 
 
-# Réponse de Rodolphe
+## Réponse de Rodolphe
 
-resulats2015 = [] #Faire une liste vide
-for t2015 in tuiles2015:
-	resultats2015.append(calculsStats(t2015))
+	resulats2015 = []
+		for t2015 in tuiles2015:
+		resultats2015.append(calculsStats(t2015))
 
  ## Semaine du 03 mars: 
 
@@ -326,15 +326,42 @@ Test de grande ampleur sur toutes les tuiles comprises entre 266-279. Succès po
             		signature = fichier.read(4)
         	print(f"{f} → Signature : {signature}")
 
-Il permet de relevé la signature des fichiers. un fichier.Las doit avoir une signature = b'LASF'. Une tuile (279-5031) était corrompue. je l'ai retiré du dossier avant de relancer le code.
+Il permet de relever la signature des fichiers. Un fichier.Las doit avoir une signature = b'LASF'. Une tuile (279-5031) était corrompue. je l'ai retiré du dossier avant de relancer le code.
 
-Succès
+**Succès**
 
 Le code suivant permet de transposer les résultats dans un csv. apres l'avoir ouvert sur Excel et réenregistré en csv il est ouvrable dans ArcGIS. Une jointure avec le fichier shapefile des tuiles LiDAR 2015 permet de visualiser les résultats.
 
 ![image](https://github.com/user-attachments/assets/9f175a29-fffb-4374-b055-a16a2489d0a3)
 
 On voit que globalement, pour toutes les tuiles de la partie extreme est de l'ile, le pourcentage de points non_classifiés ont augmentées.
+
+# Semaine du 17 mars
+
+## Roulage du script pour toutes les tuiles classifiées en "non-classifiée" pour 2015 et 2018.
+
+Une fois que toute l'île a été faite, on a 5 CSV par années (2015 et 2018). Ils sont ajoutés au projet Arcgis **Comparaison_LiDAR_Classe1**. j'ai fusionné tous les csv en 1 seul avant de faire une jointure entre ce fichier et la couche shapefile des tuiles LiDAR pour pouvoir visualiser le résultat. Avec la bonne symbologie on obtient le résultat suivant :
+
+![image](https://github.com/user-attachments/assets/1ba3e2fd-4767-4def-af80-c4937dd12f0b)
+
+Les tuiles vertes foncées sont celles dont le pourcentage de points "non-classifiés" ont fortements diminué entre les données de 2015 et 2018. En revanche, les tuiles oranges et rouges sont les tuiles dont la différence de pourcantage de données "non-classifiées" emtre 2018 et 2015 est supérieure à 15% et 30%.
+Plus globalement, près de 60% des tuiles ont un pourcentage de données "non-classifiées" plus élevé en 2018 qu'en 2015.
+
+## Roulage du script pour toutes les tuiles classifiées en "végétation haute" pour 2015 et 2018.
+
+Le code Python utilisé est le même, seul le code de classe de classification change à la ligne correspondante:
+
+	num_points_classcode = len(t2015[t2015.classification == 5]) # Nombre de points classifié selon le code de classe choisi
+
+Même procédé une fois que le script s'est effectué on peut ajouter les csv dans ArcGIS, les fusionner et les joindre à la couche shapefile. Dans ce cas on obtient des résultats tres différents. Étonnament, pour une grande majorité de l'île, les données LiDAR classifiées en "végétation haute" ont augmenté d'au moins 10% 
+
+![image](https://github.com/user-attachments/assets/ca46a135-a92c-4225-b6b6-ea6b7f46a9bd)
+
+## Résumé des résultats : 
+
+- **60% des tuiles** ont un pourcentage de données classifiées en **"non-classifiées" plus élevé en 2018** qu'en 2015.
+- **9.7% des tuiles** ont un pourcentage de données classifiées en **"végétation-haute"** en 2018 qu'en 2015.
+
 
 
 
