@@ -469,3 +469,9 @@ Le code suivant permet de **transposer les résultats dans un fichier CSV**.
 
 - **60% des tuiles** ont un pourcentage plus élevé de points **"non-classifiés" en 2018** qu'en 2015.
 - **9.7% des tuiles** montrent une augmentation du pourcentage de points classifiés en **"végétation haute" en 2018** par rapport à 2015.
+
+
+# Suite du travail
+
+- Effectuer le code pour les points classifiés en **"Végétation-moyenne"** et **"végétation-basse"**
+- Trouver une méthode pour assigner une classification aux valeurs non-classifiées dans les tuiles ou leur poucentage dépasse une valeur seuil **"x"**
