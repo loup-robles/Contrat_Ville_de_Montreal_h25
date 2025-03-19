@@ -127,7 +127,7 @@ Utilisation de la bibliothèque **laspy** :
 
 ➡ Question posée à Rodolphe pour la méthodologie du code.
 
-## Réponse de Rodolphe
+## suggestion de Rodolphe :
 
 	resulats2015 = []
 		for t2015 in tuiles2015:
